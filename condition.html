@@ -8,26 +8,32 @@
 
 </head>
 <body>
-    <div id="app">
-        {{ diem }}
+    <div id="condition">
+        <button @click="ischeck =! ischeck">check</button>
+        <template v-if="ischeck">
+            <div v-for="lang in LaPro">
+                <p>{{ lang }}</p>
+
+            </div>
+            
+        </template>
+        <p v-show="ischeck"> check v-show</p>
     </div>
     
-
 
     <!-- <script src="index.js"></script> -->
     <script>
         var app = new Vue({
-            el: '#app',
+            el: '#condition',
             data: {
-               diem :'A có Diem toan la 8'
+              ischeck: false,
+              LaPro: ['php','android','css']
             },
             watch: {
-                diem(){
-                    console.log('Diem cua A da thay doi')
-                }
+               
             }
         });
-        app.diem = "Diem A la 7"
+        
     </script>
 </body>
 </html>

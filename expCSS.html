@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+
+    <style>
+        .vuong{
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+            margin: 10px;
+            display: inline-block;
+        }
+        .red{
+            background-color: red;
+        }
+        .blu{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="vuong" @click="isRed =! isRed" :class="{red: isRed}"></div>
+        <div class="vuong"  @click="isblu =! isblu , checkred" :class="{blu: isblu,red:isRed}"></div>
+
+        <div class="vuong"  :style="[customStyle],{height: 111+'px'}"></div>
+        <div>
+            <input type="text" v-model="color" placeholder="color" > <br>
+            <input type="text" v-model="width" placeholder="change width">
+            
+
+        </div>
+        
+    </div>
+    
+
+
+    <!-- <script src="index.js"></script> -->
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+               isRed:false,
+               isblu: false,
+               color:'red',
+               width:10,
+              
+
+            },
+            computed:{
+                customStyle(){
+                    return{
+                        width: this.width + 'px',
+                        backgroundColor: this.color,
+
+                    }
+                }
+            },
+            methods:{
+                
+            },
+            watch: {
+               isblu(){
+                   if(this.isblu == true){
+                       return this.isRed = false
+                   }
+               },
+               isRed(){
+                   if(this.isRed == true){
+                       return this.isblu  = false
+                   }
+               }
+            }
+        });
+        
+    </script>
+</body>
+</html>
