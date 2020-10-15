@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <p v-html="html"></p>
+        <p>{{ message }}</p>
+        <div id="body">
+            <p>{{ content }}</p>
+            <button @click="changContent()">change content</button>
+        </div>
+        <div id="footer">
+            <p>{{ footer }}</p>
+            <a  v-bind:href="link">google</a>
+        </div>
+    </div>
+    
+
+
+    <!-- <script src="index.js"></script> -->
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Do you wanna build a Vue app?',
+                content: 'This is content',
+                footer: 'This is footer',
+                link: 'https://www.google.com/',
+                html: '<a  href="https://www.google.com/">google</a>'
+            },
+            methods:{
+                changContent(){
+                    this.content = 'This is new content'
+                }
+            }
+        });
+    </script>
+</body>
+</html>

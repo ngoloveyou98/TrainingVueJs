@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <p>{{ tanga }}</p>
+        <p>{{ tangb }}</p>
+        <button @click="a++">tang a</button>
+        <button @click="b++">tang b</button>
+
+    </div>
+    
+
+
+    <!-- <script src="index.js"></script> -->
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+              a: 0,
+              b: 0
+            },
+            computed:{
+                tanga(){
+                   console.log('funtion a')
+                   return this.a
+               },
+               tangb(){
+                   console.log('funtion b')
+                   return this.b
+               },
+            },
+            methods:{
+               
+
+            }
+        });
+    </script>
+</body>
+</html>

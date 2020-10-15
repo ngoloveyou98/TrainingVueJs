@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="count">
+        <div v-on:mousemove="tinhToaDo">
+            <p>Giá trị: {{ showDem }}</p>
+            <p>status: {{ dem > 10 ? 'bạn đã vượt quá giới hạn':""  }}</p>
+
+            <span @mousemove.stop="">Dừng tọa độ</span>
+
+            <button @click="result">Tăng</button>
+            <button @click="dem++">Tăng by js</button>
+
+            <p>Tọa đồ của chuột: {{ x }}/{{ y }}</p>
+        </div>
+
+
+        <div >
+            <input type="text" @keyup.enter="banPhim" v-model="message">
+            <p>{{ message }}</p>
+        </div>
+    </div>
+
+
+
+    <!-- <script src="index.js"></script> -->
+    <script>
+        var app = new Vue({
+            el: '#count',
+            data: {
+                dem: 0,
+                x: 0,
+                y: 0,
+                message:""
+            },
+            computed:{
+                showDem(){
+                    return this.dem
+                }
+            },
+            methods: {
+                result() {
+                    return this.dem++
+                },
+                tinhToaDo(event) {
+                    this.x = event.clientX;
+                    this.y = event.clientY
+                },
+                dungChuot(event) {
+                    event.stopPropagation()
+                },
+                banPhim(event){
+                    this.message= event.target.value
+                    alert(this.message)
+                },
+                change(event){
+                    this.message = event.target.value
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
