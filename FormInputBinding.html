@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames" />
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames" />
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames" />
+        <label for="mike">Mike</label>
+        <br />
+        <span>check names: </span>
+        <template v-if="checkedNames.length > 0">
+            <ul v-for="name in checkedNames" :key="name">
+                <li>{{ name }}</li>
+            </ul>
+        </template>
+      </div>
+<hr>
+    <div id="radio">
+        <input type="radio" id="one" value="One" v-model="picked">
+        <label for="one">One</label>
+        <br>
+        <input type="radio" id="two" value="Two" v-model="picked">
+        <label for="two">Two</label>
+        <br>
+        <span>picked: {{ picked }}</span>
+    </div>
+<hr>
+    <div id="select">
+        <select v-model="select">
+            <option value="" disabled> please select one</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <span>selected: {{ select }}</span>
+    </div>
+      <script>
+          new Vue({
+            el:'#app',
+            data(){
+                return {
+                    checkedNames:[],
+                }
+            }
+          });
+          new Vue({
+              el:'#radio',
+              data(){
+                  return{
+                    picked:''
+                  }
+              }
+          });
+
+          new Vue({
+              el:'#select',
+              data(){
+                  return{
+                    select:''
+                  }
+              }
+          })
+      </script>
+</body>
+</html>
