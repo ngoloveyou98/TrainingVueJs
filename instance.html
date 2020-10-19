@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <h1>{{ title }}</h1>
+        <button @click="changtitle" ref="infoButton">change title</button>
+        
+    </div>
+    <div id="vn">
+        <h1>{{ title }}</h1>
+    </div>
+
+    <script>
+        var tl = new Vue({
+            el:'#app',
+            data: {
+                title:'this is title 1'
+            },
+            methods:{
+                changtitle(){
+                     this.title = vn.title
+                    console.log(this.$refs)
+                    this.$refs.infoButton.innerText = 'new button'
+                }
+            },
+            watch:{
+                title(){
+                    alert('Title changed, '+ this.title)
+                }
+            }
+        });
+        var vn = new Vue({
+            el:'#vn',
+            data: {
+                title:'This is tile 2'
+            }
+        });
+
+        // setTimeout(function(){
+        //     tl.title = 'Changed by timer'
+        // },3000);
+        // console.log(vn)
+    </script>
+    
+</body>
+</html>
